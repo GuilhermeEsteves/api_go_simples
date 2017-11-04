@@ -61,6 +61,8 @@ func getUsers(w http.ResponseWriter, r *http.Request) {
 		users = append(users, user)
 	}
 
+	defer rows.Close()
+
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(users)
 }
